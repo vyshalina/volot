@@ -118,11 +118,28 @@
 							<form action="" class="contact-form">
 								<div>
 									<section class="input-group">
-										<input type="text" placeholder="Ваше Имя">
-										<input type="email" placeholder="Ваш E-mail*">
-										<input type="tel" placeholder="Номер телефона">
+										<div class="floating-label">
+											<input type="text" id="name" required="required">
+											<label for="name">Ваше Имя <sup>*</sup></label>
+										</div>
+										<div class="floating-label">
+											<input type="email" id="email" required="required">
+											<label for="email">Ваш Email <sup>*</sup></label>
+										</div>
+										<div class="floating-label">
+											<input type="tel" id="phone" required="required">
+											<label for="phone">Номер телефона <sup>*</sup></label>
+										</div>
+										
 									</section>
-									<textarea placeholder="Ваше сообщение*"></textarea>
+									<div class="textarea">
+										<div class="floating-label">
+											<textarea id="message" required="required"></textarea>
+											<label for="message">Ваше сообщение <sup>*</sup></label>
+										</div>
+										
+									</div>
+									
 								</div>
 
 								<button type="submit" class="btn">Отправить</button>
