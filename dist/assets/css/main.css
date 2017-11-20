@@ -5991,7 +5991,7 @@ footer.main-footer {
     margin-bottom: 72px;
     padding-bottom: 53px;
     border-bottom: 5px solid #f2f2f2; }
-    @media (max-width: 767px) {
+    @media (max-width: 1199px) {
       .content .intro-about hgroup {
         padding-bottom: 0;
         border: none; } }
@@ -6059,20 +6059,22 @@ footer.main-footer {
       width: 50%; } }
   @media (max-width: 1199px) {
     .content .intro-about {
-      width: 65%; }
+      width: 970px;
+      padding: 0 15px;
+      margin: 0 auto;
+      float: none; }
       .content .intro-about hgroup {
-        width: 100%; } }
+        width: 100%; }
+      .content .intro-about div {
+        max-width: none; } }
   @media (max-width: 991px) {
     .content .intro-about {
-      width: 58%; } }
+      width: 100%; } }
   @media (max-width: 767px) {
-    .content .intro-about {
-      width: 100%;
-      padding: 0 15px; }
-      .content .intro-about hgroup h1 {
-        font-size: 60px; }
-      .content .intro-about hgroup h2 {
-        font-size: 36px; } }
+    .content .intro-about hgroup h1 {
+      font-size: 60px; }
+    .content .intro-about hgroup h2 {
+      font-size: 36px; } }
   @media (max-width: 480px) {
     .content .intro-about hgroup {
       padding-bottom: 25px;
@@ -6171,6 +6173,7 @@ header.header {
       header.header .menu nav .close-btn {
         position: absolute;
         right: 49px;
+        top: 54px;
         display: inline-block;
         cursor: pointer;
         opacity: 1;
@@ -6188,20 +6191,11 @@ header.header {
         text-transform: uppercase;
         padding-top: 168px;
         margin-bottom: 100px; }
+        @media (max-width: 767px) {
+          header.header .menu nav h4 {
+            display: none; } }
       header.header .menu nav ul {
-        padding-left: 30px;
-        max-height: 140px;
-        overflow-y: auto; }
-        header.header .menu nav ul::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
-          background-color: transparent; }
-        header.header .menu nav ul::-webkit-scrollbar-thumb {
-          width: 8px;
-          height: 8px;
-          background: rgba(0, 0, 0, 0.5);
-          -webkit-border-radius: 4px;
-          border-radius: 4px; }
+        padding-left: 30px; }
         header.header .menu nav ul li {
           margin-bottom: 20px; }
           header.header .menu nav ul li:last-child {
@@ -6240,11 +6234,13 @@ header.header {
     @media (max-width: 767px) {
       header.header .menu nav {
         width: 250px;
-        padding: 32px 10px 0 20px; }
+        padding: 90px 10px 0 20px; }
         header.header .menu nav h4 {
           font-size: 30px;
           padding-top: 55px;
-          margin-bottom: 40px; } }
+          margin-bottom: 40px; }
+        header.header .menu nav .close-btn {
+          top: 32px; } }
   @media (max-width: 1199px) {
     header.header {
       width: 970px;
@@ -7101,45 +7097,24 @@ html, body {
   overflow-x: hidden;
   background: #ffffff; }
   .app.all {
-    background: url(../img/bottom-img.png) no-repeat center bottom; }
-    .app.all:before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 276px;
-      position: absolute;
-      z-index: -1;
-      background: url(../img/top-img.png) no-repeat center top; }
+    background: url(../img/bottom-img.png) no-repeat center bottom, url(../img/top-img.png) no-repeat center top;
+    background-size: contain; }
   .app.gallery {
     background: url(../img/bg-gallery.jpg) no-repeat center top;
     background-size: cover; }
     .app.gallery header.header {
       margin-bottom: 20px; }
   .app.about {
-    background: url(../img/about.png) no-repeat left top;
-    background-size: contain; }
+    background: url(../img/about.png) no-repeat left top/contain, url(../img/about-bg.png) no-repeat right bottom/cover; }
+    @media (max-width: 1599px) {
+      .app.about {
+        background: url(../img/about.png) no-repeat -120px top/contain, url(../img/about-bg.png) no-repeat right bottom/cover; } }
     @media (max-width: 1399px) {
       .app.about {
-        background-position: -240px top; } }
+        background: url(../img/about.png) no-repeat -260px top/contain, url(../img/about-bg.png) no-repeat right bottom/cover; } }
     @media (max-width: 1199px) {
       .app.about {
-        background: url("../img/about-resp.png") no-repeat left top/contain; } }
-    @media (max-width: 991px) {
-      .app.about {
-        background-position: -20px top; } }
-    @media (max-width: 767px) {
-      .app.about {
-        background: transparent; } }
-    .app.about:after {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 642px;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      z-index: -1;
-      background: url(../img/about-bg.png) no-repeat right bottom/cover; }
+        background: url(../img/about-bg.png) no-repeat right bottom/cover; } }
     .app.about header.header {
       height: 120px;
       margin-bottom: 20px; }
@@ -7149,12 +7124,12 @@ html, body {
           padding-top: 40px; } }
       .app.about header.header .burger {
         color: #fff; }
-        @media (max-width: 767px) {
+        @media (max-width: 1199px) {
           .app.about header.header .burger {
             color: initial; } }
         .app.about header.header .burger span {
           background: #fff; }
-          @media (max-width: 767px) {
+          @media (max-width: 1199px) {
             .app.about header.header .burger span {
               background: #404040; } }
     @media (max-width: 1350px) {
@@ -7171,7 +7146,7 @@ html, body {
       color: #fff; }
       .app.about footer.footer p span {
         color: #fff; }
-    @media (max-width: 767px) {
+    @media (max-width: 1199px) {
       .app.about footer.footer .logo {
         display: block; }
       .app.about footer.footer .white-logo {
