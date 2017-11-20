@@ -9,3 +9,8 @@ $(document).ready(function() {
 		return false;
 	});
 });
+
+$(window).on('load', function() {
+	$('.preloader').fadeOut();
+	$('.app.main').removeClass('active');
+});

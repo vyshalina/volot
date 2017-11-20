@@ -5637,11 +5637,13 @@ fieldset {
 
 /* выделение текста */
 ::-moz-selection {
-  background: red;
+  color: #ffffff;
+  background: fe8c00;
   text-shadow: none; }
 
 ::selection {
-  background: red;
+  color: #ffffff;
+  background: #fe8c00;
   text-shadow: none; }
 
 /***********************/
@@ -5758,6 +5760,30 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 /*********************************/
 /*********** Modules *************/
 /*********************************/
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: -webkit-linear-gradient(325deg, #f83600 0%, #fe8c00 100%);
+  background: linear-gradient(125deg, #f83600 0%, #fe8c00 100%); }
+  .preloader:after {
+    content: '';
+    display: block;
+    width: 64px;
+    height: 66px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: url("../img/preloader.png") center center no-repeat;
+    -webkit-animation: preloader 2s linear infinite;
+    animation: preloader 2s linear infinite; }
+
 .click-icon {
   cursor: pointer; }
 
@@ -5810,6 +5836,14 @@ header.intro {
       header.intro a {
         text-align: center;
         width: 100%; } }
+  header.intro .logo-main {
+    -webkit-transition: 0.4s 0.4s ease-out;
+    transition: 0.4s 0.4s ease-out; }
+    .active header.intro .logo-main {
+      opacity: 0;
+      -webkit-transform: translateY(15px);
+      -ms-transform: translateY(15px);
+      transform: translateY(15px); }
   @media (max-width: 1719px) {
     header.intro {
       left: 60px;
@@ -5882,7 +5916,12 @@ header.intro {
   z-index: 1; }
   .main-concent figure {
     -webkit-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); }
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    -webkit-transition: 0.4s 0.6s ease-out;
+    transition: 0.4s 0.6s ease-out; }
+    .active .main-concent figure {
+      -webkit-box-shadow: 0 6px 5px transparent;
+      box-shadow: 0 6px 5px transparent; }
   .main-concent img {
     width: 100%;
     height: auto; }
@@ -6621,7 +6660,7 @@ article.article {
   .content-gallery::-webkit-scrollbar-thumb {
     width: 8px;
     height: 8px;
-    background: rgba(0, 0, 0, 0.5);
+    background: transparent;
     -webkit-border-radius: 4px;
     border-radius: 4px; }
   .content-gallery figure {
@@ -6646,9 +6685,7 @@ article.article {
         height: 390px; } }
     @media (max-width: 991px) {
       .content-gallery figure {
-        height: 322px; }
-        .content-gallery figure figcaption {
-          padding: 0 30px 15px; } }
+        height: 322px; } }
     @media (max-width: 767px) {
       .content-gallery figure {
         height: 250px; }
@@ -6699,6 +6736,7 @@ article.article {
       transition: all .4s ease; }
       @media (max-width: 991px) {
         .content-gallery figure figcaption {
+          padding: 0 30px 15px;
           background: -webkit-linear-gradient(bottom, rgba(248, 54, 0, 0.8) 0, rgba(254, 140, 0, 0.8) 50px, rgba(254, 140, 0, 0) 50px);
           background: linear-gradient(0deg, rgba(248, 54, 0, 0.8) 0, rgba(254, 140, 0, 0.8) 50px, rgba(254, 140, 0, 0) 50px);
           opacity: 1; } }
@@ -7064,7 +7102,7 @@ html, body {
     background-size: contain; }
     @media (max-width: 1399px) {
       .app.about {
-        background-position: -200px top; } }
+        background-position: -240px top; } }
     @media (max-width: 1199px) {
       .app.about {
         background: url("../img/about-resp.png") no-repeat left top/contain; } }
@@ -7101,6 +7139,9 @@ html, body {
           @media (max-width: 767px) {
             .app.about header.header .burger span {
               background: #404040; } }
+    @media (max-width: 1350px) {
+      .app.about footer.footer {
+        padding-left: 60px; } }
     @media (max-width: 1199px) {
       .app.about footer.footer {
         padding-left: 15px; } }
@@ -7136,15 +7177,18 @@ h1, h2, h3, h4, h5, h6 {
 address {
   margin-bottom: 0; }
 
-/*********************************/
-/********** Typography ***********/
-/*********************************/
-/*********************************/
-/*********** Buttons *************/
-/*********************************/
-/*********************************/
-/******** Class Helpers **********/
-/*********************************/
-/*********************************/
-/*********** Modules *************/
-/*********************************/
+@-webkit-keyframes preloader {
+  0% {
+    -webkit-transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg); }
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg); } }
+
+@keyframes preloader {
+  0% {
+    -webkit-transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg); }
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg); } }

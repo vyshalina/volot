@@ -18,7 +18,7 @@ html, body {height: 100%;}
 	&.about {
 		background: url(../img/about.png) no-repeat left top; background-size: contain;
 		@include respond-to(1399px) {
-			background-position: -200px top;
+			background-position: -240px top;
 		}
 		@include respond-to(lg) {
 			background: url('../img/about-resp.png') no-repeat left top/contain;
@@ -54,6 +54,9 @@ html, body {height: 100%;}
 		}
 
 		footer.footer {
+			@include respond-to(1350px) {
+				padding-left: 60px;
+			}
 			@include respond-to(lg) {
 				padding-left: 15px;
 			}

@@ -82,11 +82,13 @@ fieldset {
 
 /* выделение текста */
 ::-moz-selection {
-    background: red;
+	color: #ffffff;
+    background: fe8c00;
     text-shadow: none;
 }
 
 ::selection {
-    background: red;
+	color: #ffffff;
+    background: #fe8c00;
     text-shadow: none;
 }
