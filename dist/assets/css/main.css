@@ -6010,7 +6010,7 @@ footer.main-footer {
       font-family: "Montserrat", sans-serif;
       font-size: 48px;
       line-height: 1;
-      letter-spacing: -1.1px;
+      letter-spacing: 0;
       font-weight: 600;
       text-transform: none;
       padding-left: 1px; }
@@ -6322,7 +6322,7 @@ header.header {
       font-family: "Montserrat", sans-serif;
       font-size: 16px;
       line-height: 1;
-      letter-spacing: -0.8px;
+      letter-spacing: 0;
       font-weight: 400;
       text-transform: uppercase;
       color: #666666; }
@@ -6374,8 +6374,8 @@ article.article {
       -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
-      -webkit-transition: 2s ease-out;
-      transition: 2s ease-out; }
+      -webkit-transition: .6s ease-out;
+      transition: .6s ease-out; }
       @media (max-width: 767px) {
         article.article figure img {
           width: 100%;
@@ -6388,13 +6388,31 @@ article.article {
           -webkit-transition: none;
           transition: none; } }
   article.article h3 {
-    color: #262626;
-    font-family: "Open Sans", sans-serif;
-    font-size: 24px;
-    line-height: 28px;
-    letter-spacing: 0;
-    font-weight: 700;
-    margin-bottom: 13px; }
+    display: inline-block; }
+    article.article h3 a {
+      color: #262626;
+      font-family: "Open Sans", sans-serif;
+      font-size: 24px;
+      line-height: 28px;
+      letter-spacing: 0;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 13px;
+      position: relative; }
+      article.article h3 a:after {
+        content: '';
+        width: 0;
+        height: 2px;
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        background: -webkit-gradient(linear, left top, right top, color-stop(1%, #f83600), to(#fe8c00));
+        background: -webkit-linear-gradient(left, #f83600 1%, #fe8c00 100%);
+        background: linear-gradient(to right, #f83600 1%, #fe8c00 100%);
+        -webkit-transition: width .4s ease;
+        transition: width .4s ease; }
+      article.article h3 a:hover:after {
+        width: 100%; }
   article.article p {
     color: #666666;
     font-family: "Open Sans", sans-serif;
