@@ -6150,7 +6150,19 @@ header.header {
         padding-top: 168px;
         margin-bottom: 100px; }
       header.header .menu nav ul {
-        padding-left: 30px; }
+        padding-left: 30px;
+        max-height: 140px;
+        overflow-y: auto; }
+        header.header .menu nav ul::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+          background-color: transparent; }
+        header.header .menu nav ul::-webkit-scrollbar-thumb {
+          width: 8px;
+          height: 8px;
+          background: rgba(0, 0, 0, 0.5);
+          -webkit-border-radius: 4px;
+          border-radius: 4px; }
         header.header .menu nav ul li {
           margin-bottom: 20px; }
           header.header .menu nav ul li:last-child {
@@ -6931,6 +6943,9 @@ article.article {
       width: 100%; }
   .contact-form button {
     padding: 21px 64px; }
+    @media (max-width: 480px) {
+      .contact-form button {
+        width: 100%; } }
   @media (max-width: 991px) {
     .contact-form .input-group {
       width: 30%; }
