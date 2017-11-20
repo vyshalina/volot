@@ -5731,7 +5731,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
     position: absolute;
     top: 1px;
     left: 1px;
-    z-index: 1;
+    z-index: -1;
     background: #fff;
     -webkit-border-radius: 50px;
     border-radius: 50px;
@@ -5741,9 +5741,13 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
     color: #fff; }
     .btn:hover:before {
       opacity: 0; }
-  .btn span {
-    position: relative;
-    z-index: 2; }
+  .btn:focus, .btn:active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    background: -webkit-linear-gradient(325deg, #f83600 0%, #fe8c00 100%);
+    background: linear-gradient(125deg, #f83600 0%, #fe8c00 100%); }
 
 /*********************************/
 /******** Class Helpers **********/
@@ -6351,10 +6355,13 @@ article.article {
         -webkit-transition: .4s ease;
         transition: .4s ease; }
         .blog-pagination li.prev a:before, .blog-pagination li.next a:before {
-          font-size: 30px;
+          content: '';
           position: absolute;
-          top: 4px;
           z-index: 2;
+          width: 10px;
+          height: 10px;
+          left: 50%;
+          top: 50%;
           -webkit-transition: .4s ease;
           transition: .4s ease; }
         .blog-pagination li.prev a:after, .blog-pagination li.next a:after {
@@ -6378,15 +6385,27 @@ article.article {
             opacity: 0; }
           .blog-pagination li.prev a:hover:before, .blog-pagination li.next a:hover:before {
             opacity: 1;
-            color: #fff; }
+            border-color: #fff; }
     .blog-pagination li.prev {
       margin-right: 25px; }
       .blog-pagination li.prev a:before {
-        content: '\2039';
-        left: 17px; }
+        -webkit-transform: translate(-3px, -5px) rotate(-45deg);
+        -ms-transform: translate(-3px, -5px) rotate(-45deg);
+        transform: translate(-3px, -5px) rotate(-45deg);
+        border-left: 2px solid #4d4d4d;
+        border-top: 2px solid #4d4d4d; }
+      @media (max-width: 480px) {
+        .blog-pagination li.prev {
+          margin-right: 15px; } }
     .blog-pagination li.next a:before {
-      content: '\203A';
-      left: 19px; }
+      -webkit-transform: translate(-6px, -5px) rotate(45deg);
+      -ms-transform: translate(-6px, -5px) rotate(45deg);
+      transform: translate(-6px, -5px) rotate(45deg);
+      border-right: 2px solid #4d4d4d;
+      border-top: 2px solid #4d4d4d; }
+    @media (max-width: 480px) {
+      .blog-pagination li.next {
+        margin-left: 0; } }
     .blog-pagination li.points {
       width: 35px; }
       .blog-pagination li.points a {
@@ -6424,33 +6443,44 @@ article.article {
         -webkit-transition: width 0.3s ease-in-out;
         transition: width 0.3s ease-in-out; }
       .blog-pagination li a:hover {
-        color: #f45637;
-        font-weight: 700; }
+        color: #f45637; }
         .blog-pagination li a:hover:after {
           width: 100%; }
-  @media (max-width: 480px) {
-    .blog-pagination li.prev {
-      margin-right: 15px; }
-    .blog-pagination li.next {
-      margin-left: 0; }
-    .blog-pagination li a {
-      font-size: 14px; } }
+      @media (max-width: 480px) {
+        .blog-pagination li a {
+          font-size: 14px; } }
 
 .content-gallery {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
-  margin: 0 -2px;
-  padding: 1px 0;
-  background: #fff;
-  -webkit-box-shadow: 0 0 4px black;
-  box-shadow: 0 0 4px black; }
+  overflow-x: auto;
+  overflow-y: visible;
+  position: relative;
+  margin: -1px 0;
+  padding-bottom: 2px;
+  -webkit-box-shadow: 0 -4px 3px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 -4px 3px 0 rgba(0, 0, 0, 0.3); }
+  .content-gallery::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: transparent; }
+  .content-gallery::-webkit-scrollbar-thumb {
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 4px;
+    border-radius: 4px; }
   .content-gallery figure {
     width: auto;
-    margin: 0 1px;
-    position: relative; }
+    padding: 1px;
+    position: relative;
+    background: #fff; }
+    .content-gallery figure:first-child {
+      padding-left: 0; }
+    .content-gallery figure:last-child {
+      padding-right: 0; }
     .content-gallery figure a {
       height: 100%; }
       .content-gallery figure a:hover figcaption {
@@ -6473,10 +6503,10 @@ article.article {
       -ms-flex-pack: end;
       justify-content: flex-end;
       position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
+      left: 1px;
+      right: 1px;
+      top: 1px;
+      bottom: 1px;
       z-index: 2;
       padding-left: 80px;
       padding-bottom: 42px;
@@ -6485,6 +6515,11 @@ article.article {
       opacity: 0;
       -webkit-transition: all .4s ease;
       transition: all .4s ease; }
+      @media (max-width: 991px) {
+        .content-gallery figure figcaption {
+          background: -webkit-linear-gradient(bottom, rgba(248, 54, 0, 0.8) 0, rgba(254, 140, 0, 0.8) 50px, rgba(254, 140, 0, 0) 50px);
+          background: linear-gradient(0deg, rgba(248, 54, 0, 0.8) 0, rgba(254, 140, 0, 0.8) 50px, rgba(254, 140, 0, 0) 50px);
+          opacity: 1; } }
       .content-gallery figure figcaption span {
         color: #fff;
         font-family: "Open Sans", sans-serif;
@@ -6495,6 +6530,11 @@ article.article {
         text-transform: uppercase;
         position: relative;
         z-index: 3; }
+        @media (max-width: 991px) {
+          .content-gallery figure figcaption span {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden; } }
     @media (max-width: 1920px) {
       .content-gallery figure {
         height: 637px; } }
@@ -6514,8 +6554,7 @@ article.article {
       .content-gallery figure {
         height: 322px; }
         .content-gallery figure figcaption {
-          padding-left: 30px;
-          padding-bottom: 25px; } }
+          padding: 0 30px 15px; } }
     @media (max-width: 767px) {
       .content-gallery figure {
         height: 250px; }
@@ -6650,6 +6689,29 @@ article.article {
     -ms-flex-direction: column;
     flex-direction: column;
     margin-right: 40px; }
+  .contact-form .floating-label {
+    position: relative; }
+    .contact-form .floating-label label {
+      color: #a6a6a6;
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      line-height: 1;
+      letter-spacing: 0.5px;
+      font-weight: 400;
+      position: absolute;
+      left: 13px;
+      top: 17px;
+      -webkit-transition: .4s ease;
+      transition: .4s ease; }
+      .contact-form .floating-label label sup {
+        color: #f83600;
+        font-size: 100%;
+        position: relative;
+        top: 0;
+        right: 4px; }
+    .contact-form .floating-label input:valid ~ label, .contact-form .floating-label textarea:valid ~ label {
+      font-size: 10px;
+      top: -10px; }
   .contact-form input, .contact-form textarea {
     color: #000;
     font-family: "Open Sans", sans-serif;
@@ -6661,30 +6723,23 @@ article.article {
     border: none;
     border-bottom: 1px solid #e6e6e6;
     background: none; }
-    .contact-form input[placeholder], .contact-form textarea[placeholder] {
-      color: #a6a6a6;
-      font-family: "Open Sans", sans-serif;
-      font-size: 14px;
-      line-height: 1;
-      letter-spacing: 0.5px;
-      font-weight: 400;
-      position: relative; }
   .contact-form input {
     width: 300px;
     height: 51px;
     margin-bottom: 31px; }
-  .contact-form textarea {
+  .contact-form .textarea {
     width: 768px;
     height: 215px; }
+    .contact-form .textarea textarea {
+      width: 100%; }
   .contact-form button {
-    padding: 21px 64px;
-    background: transparent; }
+    padding: 21px 64px; }
   @media (max-width: 991px) {
     .contact-form .input-group {
       width: 30%; }
     .contact-form input {
       width: 100%; }
-    .contact-form textarea {
+    .contact-form .textarea {
       width: 70%; } }
   @media (max-width: 767px) {
     .contact-form > div {
@@ -6709,7 +6764,7 @@ article.article {
       margin-right: 5%; }
       .contact-form input:last-child {
         margin-right: 0; }
-    .contact-form textarea {
+    .contact-form .textarea {
       width: 100%; } }
   @media (max-width: 480px) {
     .contact-form .input-group {
