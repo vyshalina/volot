@@ -235,6 +235,12 @@ footer.main-footer {
 //For all pages
 header.header {
 	width: 100%; max-width: 1920px; height: 200px; padding: 62px 0 0 100px; margin-bottom: 33px; margin-left: auto; margin-right: auto;
+	@include respond-to(md) {
+		height: 120px;
+	}
+	@include respond-to(sm) {
+		height: 80px; padding-top: 40px;
+	}
 	.burger {
 		@include font-type($Monts, 16px, 1, 1px); font-weight: 400; text-transform: uppercase;
 		display: flex; align-items: center;
@@ -332,6 +338,9 @@ header.header {
 				content: '';
 				width: 20px; height: 5px; display: inline-block; margin-left: 12px;
 				background: linear-gradient(to right, #f83600 1%,#fe8c00 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+				@include respond-to(sm) {
+					content: none;
+				}
 			}
 		}
 		h2 {
@@ -339,7 +348,7 @@ header.header {
 		}
 
 		@include respond-to(sm) {
-			margin-bottom: 90px;
+			margin-bottom: 60px;
 		}
 		@include respond-to(xs) {
 			&.little {
@@ -354,12 +363,23 @@ header.header {
 
 article.article {
 	margin-bottom: 75px;
-	&:last-of-type {margin-bottom: 116px;}
+	@include respond-to(sm) {
+		margin-bottom: 45px;
+	}
+	&:last-of-type {
+		margin-bottom: 116px;
+		@include respond-to(sm) {
+			margin-bottom: 60px;
+		}
+	}
 
 	figure {
 		margin-bottom: 40px;
 		position: relative; width: 970px; height: 450px;
 		overflow: hidden;
+		@include respond-to(sm) {
+			margin-bottom: 20px;
+		}
 		&:hover {
 			img {
 				width: 105%;
@@ -384,6 +404,9 @@ article.article {
 	p {
 		color: #666666; @include font-type($OpenS, 14px, 28px, 0.25px); font-weight: 400;
 		margin-bottom: 14px;
+		@include respond-to(sm) {
+			line-height: 25px;
+		}
 	}
 	.time {color: #666666; @include font-type($OpenS, 14px, 1, 0); font-weight: 700;}
 
@@ -402,6 +425,9 @@ article.article {
 	position: relative; width: 970px; padding: 61px 0 68px 198px; margin-bottom: 80px;
 	background: url(../img/banner.png) no-repeat right 0 #000; background-size: 100% 100%;
 	transition: background-size 2s ease-out;
+	@include respond-to(sm) {
+		margin-bottom: 45px;
+	}
 	&:hover {
 		background-size: 105% 105%;
 		@include respond-to(md) {background-size: inherit;}
@@ -439,6 +465,9 @@ article.article {
 	display: flex; align-items: center;
 	width: 100%; padding-top: 38px;
 	border-top: 2px solid #f2f2f2;
+	@include respond-to(sm) {
+		justify-content: center;
+	}
 	li {
 		text-align: center;
 		width: 25px; margin-right: 18px;
@@ -589,22 +618,38 @@ article.article {
 .contacts {
 	display: flex; 
 	padding-top: 2px; padding-left: 1px; margin-bottom: 134px;
+	@include respond-to(xs) {
+		margin-bottom: 60px;
+	}
 	li {
 		text-align: center;
 		width: 230px; margin-right: 226px; margin-right: 171px;
+
 		&:first-child {text-align: left;}
 		&:last-child {margin-right: 0;}
 		address {
 			display: flex; flex-direction: column;
 			text-align: left;
+			@include respond-to(sm) {
+				text-align: center;
+			}
+			@include respond-to(xs) {
+				text-align: left;
+			}
 			span {height: 55px; margin-bottom: 24px;}
 			h4 {
 				@include font-type($OpenS, 16px, 1, 0.5px); font-weight: 700;
 				margin-left: -2px; margin-bottom: 20px; 
+				@include respond-to(sm) {
+					margin-left: 0;
+				}
 			}
 			p {
 				@include font-type($OpenS, 14px, 1, 0.5px); font-weight: 400;
 				margin-left: -2px; margin-bottom: 14px;
+				@include respond-to(sm) {
+					margin-left: 0;
+				}
 			}
 		}
 	}
@@ -613,10 +658,15 @@ article.article {
 		li {margin-right: 0;}
 	}
 	@include respond-to(sm) {
-		flex-direction: column;
+		flex-wrap: wrap; justify-content: center;
 		li {
-			margin-bottom: 20px;
+			margin-bottom: 20px; width: 50%;
 			&:last-child {margin-bottom: 0;}
+		}
+	}
+	@include respond-to(xs) {
+		li {
+			width: 100%;
 		}
 	}
 }
@@ -634,21 +684,41 @@ article.article {
 			img {float: right; margin-top: -118px;}
 		}
 	}
-	@include respond-to(sm) {width: 90%; height: 300px; float: none; margin-left: auto; margin-right: auto;}
+	@include respond-to(sm) {width: 100%; height: 300px; float: none; margin-left: auto; margin-right: auto; margin-bottom: 60px;}
 }
 .contact-form {
 	padding-bottom: 44px; width: 100%;
-	& > div {display: flex; margin-bottom: 30px;}
+	& > div {
+		display: flex; margin-bottom: 30px;
+		@include respond-to(sm) {
+			flex-wrap: wrap; justify-content: space-between;
+		}
+	}
 	.input-group {
 		display: flex; flex-direction: column;
 		margin-right: 40px; 
+		@include respond-to(sm) {
+			margin-right: 0;
+		}
+		@include respond-to(xs) {
+			flex-wrap: wrap;
+		}
 	}
 	.floating-label {
 		position: relative;
+		@include respond-to(sm) {
+			width: 32%;
+		}
+		@include respond-to(xs) {
+			width: 100%;
+		}
 		label {
 			color: #a6a6a6; @include font-type($OpenS, 14px, 1, 0.5px); font-weight: 400;
 			position: absolute; left: 13px; top: 17px;
 			transition: .4s ease;
+			@include respond-to(sm) {
+				left: 5px;
+			}
 			sup {
 				color: #f83600; font-size: 100%;
 				position: relative; top: 0; right: 4px;
@@ -662,12 +732,18 @@ article.article {
 		color: #000; @include font-type($OpenS, 14px, 1, 0.5px); font-weight: 400;
 		padding: 18px 13px;
 		border: none; border-bottom: 1px solid #e6e6e6; background: none;
+		@include respond-to(sm) {
+			padding: 18px 5px;
+		}
 	}
 	input {
 		width: 300px; height: 51px; margin-bottom: 31px;  
 	}
 	.textarea {
 		width: 768px; height: 215px;
+		.floating-label {
+			width: 100%;
+		}
 		textarea {width: 100%;}
 	}
 	button {padding: 21px 64px;}
@@ -677,14 +753,12 @@ article.article {
 		.textarea {width: 70%}
 	}
 	@include respond-to(sm) {
-		& > div {flex-direction: column;}
 		.input-group {flex-direction: row; justify-content: space-between; width: 100%;}
-		input {width: 30%; margin-right: 5%; &:last-child {margin-right: 0;}}
+		input {&:last-child {margin-right: 0;}}
 		.textarea {width: 100%;}
 	}
 	@include respond-to(xs) {
 		.input-group {
-			flex-direction: column;
 			input {width: 100%; margin-right: 0;}
 		}
 	}
@@ -712,6 +786,9 @@ footer.footer {
 		width: 970px; padding-left: 30px; padding-right: 30px; left: 0; margin-left: 0;
 	}
 	@include respond-to(md) {width: 100%;}
+	@include respond-to(sm) {
+		padding-left: 15px; padding-right: 15px;
+	}
 
 }
 
