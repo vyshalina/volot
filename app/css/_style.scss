@@ -16,27 +16,52 @@ html, body {height: 100%;}
 		header.header {margin-bottom: 20px;}
 	}
 	&.about {
-		background: url(../img/about.png) no-repeat left top;
+		background: url(../img/about.png) no-repeat left top; background-size: contain;
+		@include respond-to(1399px) {
+			background-position: -200px top;
+		}
+		@include respond-to(lg) {
+			background: url('../img/about-resp.png') no-repeat left top/contain;
+		}
+		@include respond-to(md) {
+			background-position: -20px top;
+		}
+		@include respond-to(sm) {
+			background: transparent;
+		}
 		&:after {
 			content: '';
 			display: block; width: 100%; height: 642px; position: absolute; bottom: 0; right: 0; z-index: -1;
-			background: url(../img/about-bg.png) no-repeat right bottom;
+			background: url(../img/about-bg.png) no-repeat right bottom/cover;
 		}
 		header.header {
 			height: 120px; margin-bottom: 20px;
+			@include respond-to(sm) {
+				height: 80px; padding-top: 40px;
+			}
 			.burger {
 				color: #fff;
-				span {background: #fff;}
+				@include respond-to(sm) {
+					color: initial;
+				}
+				span {
+					background: #fff;
+					@include respond-to(sm) {
+						background: #404040;
+					}
+				}
 			}
 		}
 
 		footer.footer {
+			@include respond-to(lg) {
+				padding-left: 15px;
+			}
 			.logo {display: none;}
 			.white-logo {display: block;}
 			p {color: #fff; span {color: #fff;} }
 		}
-		@include respond-to(lg) {
-			background-size: 50%;
+		@include respond-to(sm) {
 			footer.footer {
 				.logo {display: block; }
 				.white-logo {display: none;}

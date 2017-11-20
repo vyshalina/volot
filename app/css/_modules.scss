@@ -64,7 +64,13 @@ header.intro {
 		color: #404040; @include font-type($OpenS, 16px, 32px, 0.4px); font-weight: 400;
 		padding-left: 87px; margin-bottom: 72px;
 	}
-	a {margin-left: 90px;}
+	a {
+		margin-left: 90px;
+		@include respond-to(xs) {
+			text-align: center;
+			width: 100%;
+		}
+	}
 
 	@media (max-width: 1719px) {left: 60px; top: 10px;}
 	@include respond-to(lg){
@@ -78,7 +84,7 @@ header.intro {
 		p {font-size: 14px; line-height: 28px; text-shadow: 1px 1px 0px #fff, 1px 1px 0px #fff, 1px 1px 0px #fff, 1px 1px 0px #fff, 1px 1px 0px #fff, 1px 1px 0px #fff, 1px 1px 0px #fff;}
 	}
 	@include respond-to(md) {
-		width: 100%; position: relative; padding-bottom: 50px;
+		width: 100%; position: relative; padding-bottom: 50px; left: 0; top: 0;
 		.logo-main {width: 200px;}
 		h1 {
 			text-shadow: 1px 1px 0 #999;
@@ -86,23 +92,29 @@ header.intro {
 		}
 	}
 	@media (max-width: 680px) {
-		.logo-main {width: 25%;}
+		.logo-main {width: 135px;}
 		h1 {padding-top: 118px; padding-left: 20px;}
 		p {padding-left: 22px;}
 		a {margin-left: 22px;}
 	}
 	@include respond-to(xs) {
+		position: initial; padding: 20px 15px;
+		.logo-main {position: absolute; left: 0; top: 0; width: 25%;}
 		h1 {
-			font-size: 26px; line-height: 22px; text-shadow: none;
-			padding-top: 162px;
+			font-size: 26px; line-height: 26px; text-shadow: none;
+			padding: 0;
 		}
-		p {margin-bottom: 45px;}
+		p {
+			line-height: 25px;
+			margin-bottom: 45px; padding: 0;
+		}
+		a {margin-left: 0;}
 	}
 
 }
 
 .main-concent {
-	display: block; float: right; padding-top: 102px; padding-bottom: 40px;
+	display: block; float: right; padding-top: 102px; padding-bottom: 20px;
 	position: relative; z-index: 1;
 	figure {box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);}
 	img {width: 100%; height: auto;}
@@ -114,9 +126,9 @@ header.intro {
 		width: 68%;
 	}
 	@include respond-to(lg) {width: 65%; opacity: 0.8; margin-top: -370px; padding-top: 0;}
-	@include respond-to(md) {margin-top: 0; position: absolute; top: 30px; right: 0;}
-	@media (max-width: 680px) {width: 72%;}
-	@include respond-to(xs) {width: 90%; right: 5%; top: 50px;}
+	@include respond-to(md) {margin-top: 0; position: absolute; top: 130px; right: -90px; width: 480px;}
+	@media (max-width: 680px) {width: 360px; top: 0; right: 0}
+	@include respond-to(xs) {width: 100%; position: relative;}
 }
 
 //spacer for index
@@ -142,10 +154,14 @@ footer.main-footer {
 .content {
 	.intro-about  {
 		width: 51%; float: right;
-		div {margin-bottom: 67px;}
+		div {margin-bottom: 67px; max-width: 600px;}
 		hgroup {
 			width: 570px; margin-left: -2px; margin-bottom: 72px; padding-bottom: 53px;
 			border-bottom: 5px solid #f2f2f2;
+			@include respond-to(sm) {
+				padding-bottom: 0;
+				border: none;
+			}
 			h1 {
 				color: #262626;  @include font-type($Monts, 72px, 1, -0.2px); font-weight: 600;
 				margin-bottom: 20px;
@@ -165,23 +181,37 @@ footer.main-footer {
 			padding-left: 2px; margin-bottom: 28px;
 			&:last-of-type {margin-bottom: 0;}
 		}
-		.btn {margin-left: 4px; padding: 21px 45px;}
+		.btn {
+			margin-left: 4px; padding: 21px 45px;
+			@include respond-to(sm) {
+				margin-left: 0;
+			}
+			@include respond-to(xs) {
+				text-align: center;
+				width: 100%;
+			}
+		}
 
 		@media (max-width: 1700px) {
-			width: 60%; padding-right: 30px;
+			width: 45%; padding-right: 30px;
 			hgroup {
 				h1, h2 {text-shadow: 0 0 1px #fff;}
 			}
 			h3 {text-shadow: 0 0 1px #fff;}
 			p {text-shadow: 0.3px 0.3px 0 #000;}
 		}
+		@media (max-width: 1399px) {
+			width: 50%;
+		}
 		@include respond-to(lg) {
 			width: 65%;
 			hgroup {width: 100%;}
 		}
-		@include respond-to(lg) {width: 80%;}
+		@include respond-to(md) {
+			width: 58%;
+		}
 		@include respond-to(sm) {
-			width: 95%;
+			width: 100%; padding: 0 15px;
 			hgroup {
 				h1 {font-size: 60px;}
 				h2 {font-size: 36px;}
@@ -221,7 +251,7 @@ header.header {
 	}
 	.menu {
 		position: fixed; left: 0; right: 0; top: 0; bottom: 0; z-index: 10;
-		background: rgba(0,0,0,0.8);
+		background: rgba(226,226,226,0.8);
 		opacity: 0; pointer-events: none;
 		transition: all .4s ease;
 		nav {
@@ -323,7 +353,27 @@ article.article {
 	margin-bottom: 75px;
 	&:last-of-type {margin-bottom: 116px;}
 
-	figure {margin-bottom: 40px;}
+	figure {
+		margin-bottom: 40px;
+		position: relative; width: 970px; height: 450px;
+		overflow: hidden;
+		&:hover {
+			img {
+				width: 105%;
+				@include respond-to(sm) {
+					width: 100%;
+				}
+			}
+		}
+		img {
+			width: 100%; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+			transition: 2s ease-out;
+			@include respond-to(sm) {
+				width: 100%; position: relative; left: 0; top: 0; transform: none;
+				transition: none;
+			}
+		}
+	}
 	h3 {
 		color: #262626; @include font-type($OpenS, 24px, 28px, 0); font-weight: 700;
 		margin-bottom: 13px;
@@ -336,13 +386,23 @@ article.article {
 
 	@include respond-to(lg) {
 		width: 100%;
-		figure { width: 100%; img {width: 100%; height: auto;} }
+		figure { width: 100%; height: 330px; img {width: 100%; height: auto;} }
+	}
+	@include respond-to(sm) {
+		figure {
+			height: auto;
+		}
 	}
 }
 
 .banner {
 	position: relative; width: 970px; padding: 61px 0 68px 198px; margin-bottom: 80px;
-	background: url(../img/banner.png) no-repeat right 0 #000;
+	background: url(../img/banner.png) no-repeat right 0 #000; background-size: 100% 100%;
+	transition: background-size 2s ease-out;
+	&:hover {
+		background-size: 105% 105%;
+		@include respond-to(md) {background-size: inherit;}
+	}
 	.gradient {
 		position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 1;
 		background: linear-gradient(to right, #f83600 1%,#fe8c00 100%); opacity: 0.8;
@@ -357,6 +417,7 @@ article.article {
 	@include respond-to(lg) {width: 100%;}
 	@include respond-to(md) {
 		padding: 50px 0 50px 85px;
+		background-size: contain;
 		& > a {left: 21px; top: 85px;}
 		p {font-size: 20px; line-height: 32px;}
 	}
@@ -469,6 +530,24 @@ article.article {
 	figure {
 		width: auto; padding: 1px; position: relative;
 		background: #fff;
+		@media (max-width: 1920px) {height: 637px;}
+		@media (max-width: 1720px) {height: 561px;}
+		@media (max-width: 1520px) {height: 496px;}
+		@media (max-width: 1320px) {height: 430px;}
+		@include respond-to(lg){height: 390px;}
+		@include respond-to(md){
+			height: 322px;
+			figcaption {padding: 0 30px 15px;}
+		}
+		@include respond-to(sm) {
+			height: 250px;
+			figcaption {
+				span {font-size: 14px; line-height: 18px;}
+			}
+		}
+		@include respond-to(xs) {
+			figcaption {padding-left: 15px; padding-bottom: 15px;}
+		}
 		&:first-child {
 			padding-left: 0;
 		}
@@ -492,6 +571,7 @@ article.article {
 				background: linear-gradient(0deg, rgba(248,54,0,0.8) 0,rgba(254,140,0,0.8) 50px, rgba(254,140,0,0) 50px);
 				opacity: 1;
 			}
+
 			span {
 				color: #fff; @include font-type($OpenS, 16px, 20px, 0.7px); font-weight: 600; text-transform: uppercase;
 				position: relative; z-index: 3;
@@ -499,26 +579,7 @@ article.article {
 					white-space: nowrap; text-overflow: ellipsis;
 					overflow: hidden;
 				}
-
 			}
-		}
-		@media (max-width: 1920px) {height: 637px;}
-		@media (max-width: 1720px) {height: 561px;}
-		@media (max-width: 1520px) {height: 496px;}
-		@media (max-width: 1320px) {height: 430px;}
-		@include respond-to(lg){height: 390px;}
-		@include respond-to(md){
-			height: 322px;
-			figcaption {padding: 0 30px 15px;}
-		}
-		@include respond-to(sm) {
-			height: 250px;
-			figcaption {
-				span {font-size: 14px; line-height: 18px;}
-			}
-		}
-		@include respond-to(xs) {
-			figcaption {padding-left: 15px; padding-bottom: 15px;}
 		}
 	}
 }
@@ -632,7 +693,7 @@ footer.footer {
 	}
 
 	@media (max-width: 1350px) {
-		width: 1200px; padding-left: 15px; padding-right: 15px; left: 50%; margin-left: -600px;
+		width: 100%; padding: 0 30px 40px 100px;
 	}
 	@include respond-to(lg) {
 		width: 970px; padding-left: 30px; padding-right: 30px; left: 0; margin-left: 0;
@@ -640,3 +701,4 @@ footer.footer {
 	@include respond-to(md) {width: 100%;}
 
 }
+
