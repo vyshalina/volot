@@ -419,11 +419,26 @@ article.article {
 }
 //GALLERY
 .content-gallery {
-	display: flex;
-	width: 100%; margin: 0 -2px; padding: 1px 0;
-	background: #fff; box-shadow: 0 0 4px rgba(0, 0, 0, 1);
+	display: flex; overflow-x:auto; overflow-y: visible; position: relative;
+	margin: -1px 0; padding-bottom: 2px;
+	box-shadow: 0 -4px 3px 0 rgba(0, 0, 0, 0.3);
+	&::-webkit-scrollbar {
+		width: 8px; height: 8px;
+		background-color: transparent;
+	}
+	&::-webkit-scrollbar-thumb {
+		width: 8px; height: 8px;
+		background: rgba(0,0,0,0.5);border-radius: 4px;
+	}
 	figure {
-		width: auto; margin: 0 1px; position: relative;
+		width: auto; padding: 1px; position: relative;
+		background: #fff;
+		&:first-child {
+			padding-left: 0;
+		}
+		&:last-child {
+			padding-right: 0;
+		}
 		a {
 			height: 100%;
 			&:hover {
@@ -433,13 +448,21 @@ article.article {
 		img {height: 100%; width: auto;}
 		figcaption {
 			display: flex; flex-direction: column; justify-content: flex-end;
-			position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 2; padding-left: 80px; padding-bottom: 42px;
+			position: absolute; left: 1px; right: 1px; top: 1px; bottom: 1px; z-index: 2; padding-left: 80px; padding-bottom: 42px;
 			background: linear-gradient(135deg, rgba(248,54,0,0.8) 0%,rgba(254,140,0,0.8) 100%);
 			opacity: 0;
 			transition: all .4s ease;
+			@include respond-to(md) {
+				background: linear-gradient(0deg, rgba(248,54,0,0.8) 0,rgba(254,140,0,0.8) 50px, rgba(254,140,0,0) 50px);
+				opacity: 1;
+			}
 			span {
 				color: #fff; @include font-type($OpenS, 16px, 20px, 0.7px); font-weight: 600; text-transform: uppercase;
 				position: relative; z-index: 3;
+				@include respond-to(md) {
+					white-space: nowrap; text-overflow: ellipsis;
+					overflow: hidden;
+				}
 
 			}
 		}
@@ -450,7 +473,7 @@ article.article {
 		@include respond-to(lg){height: 390px;}
 		@include respond-to(md){
 			height: 322px;
-			figcaption {padding-left: 30px; padding-bottom: 25px;}
+			figcaption {padding: 0 30px 15px;}
 		}
 		@include respond-to(sm) {
 			height: 250px;
