@@ -8,6 +8,24 @@ $(document).ready(function() {
 		$('.menu').toggleClass('active');
 		return false;
 	});
+	$('.portfolio a').click(function() {
+		$('.portfolio-menu').toggleClass('active');
+		$('.portfolio').toggleClass('active');
+		return false;
+	});
+
+	var sliderLength = $('.main-concent figure img').length,
+	counter = 0;
+	setInterval(function() {
+		if(counter < sliderLength) {
+			$('.main-concent figure img.active').removeClass('active').next().addClass('active');
+			counter++;
+		} else {
+			$('.main-concent figure img.active').removeClass('active');
+			$('.main-concent figure img').eq(0).addClass('active');
+			counter = 0;
+		}
+	}, 2000);
 });
 
 $(window).on('load', function() {

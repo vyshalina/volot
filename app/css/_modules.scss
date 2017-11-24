@@ -139,10 +139,19 @@ header.intro {
 	position: relative; z-index: 1;
 
 	figure {
+		position: relative;
 		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 		transition: 0.4s 0.6s ease-out;
 		.active & {
 			box-shadow: 0 6px 5px rgba(0, 0, 0, 0);
+		}
+		img {
+			position: absolute; left: 0; top: 0;
+			opacity: 0;
+			transition: 0.4s 0.6s ease-out;
+			&.active {
+				opacity: 1;
+			}
 		}
 	}
 	img {width: 100%; height: auto;}
@@ -296,7 +305,7 @@ header.header {
 		transition: all .4s ease .5s;
 		nav {
 			width: 320px; height: 100%; position: relative; padding: 54px 35px 0 45px; overflow: hidden;
-			background: #fff;
+			background: #fff; height: 100hv; overflow-y: auto;
 			transform: translateX(-320px);
 			transition: all .4s ease;
 			&:after {
@@ -318,7 +327,7 @@ header.header {
 					display: none;
 				}
 			}
-			ul {
+			& > ul {
 				padding-left: 30px;
 				li {
 					margin-bottom: 20px;
@@ -343,6 +352,15 @@ header.header {
 							&:after {
 								width: 100%;
 							}
+						}
+					}
+					& > ul {
+						margin-bottom: 0;
+						height: 0; max-height: 0; overflow: hidden;
+						&.active {height: auto; max-height: 1000px; padding: 25px 0; }
+						li {
+							padding-left: 20px; margin-bottom: 15px;
+							a {text-transform: none;}
 						}
 					}
 				}
@@ -483,7 +501,25 @@ article.article {
 			line-height: 25px;
 		}
 	}
-	.time {color: #666666; @include font-type($OpenS, 14px, 1, 0); font-weight: 700;}
+	.time {
+		color: #666666; @include font-type($OpenS, 14px, 1, 0); font-weight: 700;
+		display: block; margin-bottom: 20px;
+	}
+	& > a {
+		color: #f45637; font-weight: 700; text-transform: uppercase;
+		display: inline-block; position: relative;
+		&:hover {
+			&:after {
+				width: 100%;
+			}
+		}
+		&:after {
+			content: '';
+			width: 0; height: 2px; position: absolute; left: 0; bottom: 0;
+			background: linear-gradient(to right, #f83600 1%, #fe8c00 100%);
+			transition: width .4s ease;
+		}
+	}
 
 	@include respond-to(lg) {
 		width: 100%;
@@ -700,7 +736,14 @@ article.article {
 		text-align: center;
 		width: 230px; margin-right: 226px; margin-right: 171px;
 
-		&:first-child {text-align: left;}
+		&:first-child {
+			text-align: left;
+			address {
+				span {
+					i {margin-top: -10px;}
+				}
+			}
+		}
 		&:last-child {margin-right: 0;}
 		address {
 			display: flex; flex-direction: column;
@@ -850,8 +893,9 @@ article.article {
 //FOOTER
 .spacer {height: 145px; clear: both;}
 footer.footer {
-	display: flex; align-items: flex-end;
+	display: flex; align-items: flex-end; justify-content: space-between;
 	height: 145px; width: 100%; max-width: 1920px; padding-left: 97px; padding-bottom: 38px; position: absolute; left: 0; bottom: 0;
+	@include respond-to(sm) {flex-direction: column-reverse; align-items: start;}
 	.copyright {
 		display: flex; align-items: center;
 		p {
@@ -860,6 +904,18 @@ footer.footer {
 			span {color: #f83600;}
 		}
 		img {margin-left: 4px;}
+	}
+
+	.soc {
+		display: flex; padding-right: 20px;
+		li {
+			margin-left: 15px;
+			&:first-child {margin-left: 0;}
+			a {
+				&:hover {i {color: #000;}}
+				i {color: #f83600; font-size: 22px; transition: .4s ease;}
+			}
+		}
 	}
 
 	@media (max-width: 1350px) {

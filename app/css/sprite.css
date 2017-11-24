@@ -18,31 +18,37 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 */
 .icon-anchor {
   background-image: url(../img/sprite.png);
-  background-position: 0px -53px;
+  background-position: -34px -65px;
   width: 36px;
   height: 37px;
 }
 .icon-close {
   background-image: url(../img/sprite.png);
-  background-position: -36px -53px;
+  background-position: -70px -65px;
   width: 21px;
   height: 21px;
 }
+.icon-cup {
+  background-image: url(../img/sprite.png);
+  background-position: 0px 0px;
+  width: 53px;
+  height: 65px;
+}
 .icon-map {
   background-image: url(../img/sprite.png);
-  background-position: -98px 0px;
+  background-position: 0px -65px;
   width: 34px;
   height: 52px;
 }
 .icon-phone {
   background-image: url(../img/sprite.png);
-  background-position: -53px 0px;
+  background-position: -106px 0px;
   width: 45px;
   height: 45px;
 }
 .icon-time {
   background-image: url(../img/sprite.png);
-  background-position: 0px 0px;
+  background-position: -53px 0px;
   width: 53px;
   height: 53px;
 }
