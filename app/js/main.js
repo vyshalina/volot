@@ -17,7 +17,7 @@ $(document).ready(function() {
 	var sliderLength = $('.main-concent figure img').length,
 	counter = 0;
 	setInterval(function() {
-		if(counter < sliderLength) {
+		if(counter < sliderLength-1) {
 			$('.main-concent figure img.active').removeClass('active').next().addClass('active');
 			counter++;
 		} else {
@@ -36,7 +36,7 @@ $(window).on('load', function() {
 $(document).mouseup(function (e) {
 	var menuBlock = $(".menu nav"),
 		closeBtn = $(".menu nav a.close-btn");
-	if (!menuBlock.is(e.target) && closeBtn.has(e.target).length === 0){
+	if (!menuBlock.is(e.target) && menuBlock.has(e.target).length === 0){
 		$('.burger').removeClass('active');
 		$('.menu').removeClass('active');
 	}
