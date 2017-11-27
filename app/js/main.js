@@ -10,7 +10,7 @@ $(document).ready(function() {
 	});
 	$('.portfolio a').click(function() {
 		$('.portfolio-menu').toggleClass('active');
-		$('.portfolio').toggleClass('active');
+		$('.portfolio').toggleClass('open');
 		return false;
 	});
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
 			$('.main-concent figure img').eq(0).addClass('active');
 			counter = 0;
 		}
-	}, 2000);
+	}, 2500);
 });
 
 $(window).on('load', function() {
