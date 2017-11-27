@@ -9287,36 +9287,37 @@ article.article {
     .contacts li {
       width: 100%; } }
 
-.map {
+#map {
   width: 1544px;
+  height: 490px;
   margin-bottom: 142px;
   float: right;
   -webkit-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); }
   @media (max-width: 1720px) {
-    .map {
+    #map {
       width: 1400px;
       height: 496px; } }
   @media (max-width: 1500px) {
-    .map {
+    #map {
       width: 1000px;
       height: 496px; } }
   @media (max-width: 1199px) {
-    .map {
+    #map {
       width: 900px;
       height: 496px; } }
   @media (max-width: 991px) {
-    .map {
+    #map {
       width: 700px;
       height: 350px;
       overflow: hidden; }
-      .map figure {
+      #map figure {
         height: 100%; }
-        .map figure img {
+        #map figure img {
           float: right;
           margin-top: -118px; } }
   @media (max-width: 767px) {
-    .map {
+    #map {
       width: 100%;
       height: 300px;
       float: none;

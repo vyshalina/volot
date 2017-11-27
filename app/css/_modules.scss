@@ -821,8 +821,8 @@ article.article {
 	}
 }
 
-.map {
-	width: 1544px; margin-bottom: 142px; float: right;
+#map {
+	width: 1544px; height: 490px; margin-bottom: 142px; float: right;
 	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 	@media (max-width: 1720px) {width: 1400px; height: 496px;}
 	@media (max-width: 1500px) {width: 1000px; height: 496px;}
