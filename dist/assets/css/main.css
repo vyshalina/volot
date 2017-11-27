@@ -8265,8 +8265,8 @@ header.intro {
       left: 0;
       top: 0;
       opacity: 0;
-      -webkit-transition: 0.4s 0.6s ease-out;
-      transition: 0.4s 0.6s ease-out; }
+      -webkit-transition: 0.4s ease 0.6s;
+      transition: 0.4s ease 0.6s; }
       .main-concent figure img.active {
         opacity: 1; }
   .main-concent img {
@@ -9211,7 +9211,7 @@ article.article {
       .contacts li address p {
         font-family: "Open Sans", sans-serif;
         font-size: 14px;
-        line-height: 1;
+        line-height: 20px;
         letter-spacing: 0.5px;
         font-weight: 400;
         margin-left: -2px;
