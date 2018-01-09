@@ -8,7 +8,7 @@ $(document).ready(function() {
 		$('.menu').toggleClass('active');
 		return false;
 	});
-	$('.portfolio a').click(function() {
+	$('.portfolio > a').click(function() {
 		$('.portfolio-menu').toggleClass('active');
 		$('.portfolio').toggleClass('open');
 		return false;
