@@ -5598,8 +5598,8 @@ button.close {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../fonts/fontawesome/fontawesome-webfont.eot?v=4.7.0");
-  src: url("../fonts/fontawesome/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("../fonts/fontawesome/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("../fonts/fontawesome/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("../fonts/fontawesome/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("../fonts/fontawesome/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  src: url("../fonts/fontawesome-webfont.eot?v=4.7.0");
+  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("../fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -8142,9 +8142,10 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 header.intro {
   position: absolute;
-  top: 35px;
+  top: 42%;
   left: 136px;
-  z-index: 2; }
+  z-index: 2;
+  text-align: right; }
   header.intro h1 {
     color: #262626;
     font-family: "Montserrat", sans-serif;
@@ -8157,7 +8158,8 @@ header.intro {
     padding-left: 85px;
     margin-bottom: 22px; }
     header.intro h1 span {
-      color: #f83600; }
+      color: #f83600;
+      display: block; }
   header.intro p {
     color: #404040;
     font-family: "Open Sans", sans-serif;
@@ -8167,12 +8169,10 @@ header.intro {
     font-weight: 400;
     padding-left: 87px;
     margin-bottom: 72px; }
-  header.intro a {
-    margin-left: 90px; }
-    @media (max-width: 480px) {
-      header.intro a {
-        text-align: center;
-        width: 100%; } }
+  @media (max-width: 480px) {
+    header.intro a {
+      text-align: center;
+      width: 100%; } }
   header.intro .logo-main {
     -webkit-transition: 0.4s 0.4s ease-out;
     transition: 0.4s 0.4s ease-out; }
@@ -8181,10 +8181,6 @@ header.intro {
       -webkit-transform: translateY(15px);
       -ms-transform: translateY(15px);
       transform: translateY(15px); }
-  @media (max-width: 1719px) {
-    header.intro {
-      left: 60px;
-      top: 10px; } }
   @media (max-width: 1199px) {
     header.intro {
       position: relative;
@@ -8247,8 +8243,7 @@ header.intro {
 .main-concent {
   display: block;
   float: right;
-  padding-top: 102px;
-  padding-bottom: 20px;
+  padding: 100px 20px 20px 0;
   position: relative;
   z-index: 1; }
   .main-concent figure {
