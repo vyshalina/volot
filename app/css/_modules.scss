@@ -24,7 +24,7 @@
 		&:before {opacity: 0;}
 	}
 	&:focus, &:active {
-		box-shadow: none;
+		box-shadow: none; outline: none;
 		border-radius: 50px; background: linear-gradient(125deg, rgba(248,54,0,1) 0%, rgba(254,140,0,1) 100%);
 	}
 }
@@ -701,7 +701,7 @@ article.article {
 .content-gallery {
 	display: flex; overflow-x:auto; overflow-y: visible; position: relative;
 	margin: -1px 0; padding-bottom: 2px;
-	box-shadow: 0 -4px 3px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.2);
 	&::-webkit-scrollbar {
 		width: 8px; height: 8px;
 		background-color: #d0d0d0;
@@ -713,6 +713,7 @@ article.article {
 	figure {
 		width: auto; padding: 1px; position: relative;
 		background: #fff;
+		@media (min-width: 1921px) {height: 700px;}
 		@media (max-width: 1920px) {height: 637px;}
 		@media (max-width: 1720px) {height: 561px;}
 		@media (max-width: 1520px) {height: 496px;}
@@ -765,6 +766,52 @@ article.article {
 			}
 		}
 	}
+}
+
+.content-category {
+
+	figure {
+		display: flex; flex-flow: row nowrap; align-items: center; justify-content: center;
+		@include respond-to(sm) {flex-flow: column nowrap;}
+
+		& > a {
+			display: block; width: 33%; position: relative;
+			border: 2px solid #fff;
+			@include respond-to(sm) {width: 100%;}
+
+			&:hover {
+				figcaption {opacity: 1;}
+			}
+		}
+		
+		img {width: 100%;}
+		figcaption {
+			display: flex; flex-direction: column; justify-content: flex-end;
+			position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 2; padding-left: 80px; padding-bottom: 42px;
+			background: linear-gradient(135deg, rgba(248,54,0,0.8) 0%,rgba(254,140,0,0.8) 100%);
+			opacity: 0;
+			transition: all .4s ease;
+			@include respond-to(md) {
+				padding: 0 30px 15px;
+				background: linear-gradient(0deg, rgba(248,54,0,0.8) 0,rgba(254,140,0,0.8) 50px, rgba(254,140,0,0) 50px);
+				opacity: 1;
+			}
+
+			span {
+				color: #fff; @include font-type($OpenS, 16px, 20px, 0.7px); font-weight: 600; text-transform: uppercase;
+				position: relative; z-index: 3;
+				@include respond-to(md) {
+					white-space: nowrap; text-overflow: ellipsis;
+					overflow: hidden;
+				}
+			}
+		}
+	}
+	
+
+
+
+	
 }
 
 //CONTACT
